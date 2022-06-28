@@ -193,6 +193,10 @@
     <Content Include="images\adidasforum.jpg" />
     <Content Include="images\adidasr1.jpg" />
     <Content Include="images\adidasstanmith.jpg" />
+    <Content Include="images\Admin\Icons\accept.png" />
+    <Content Include="images\Admin\Icons\add.png" />
+    <Content Include="images\Admin\Icons\icon_An.png" />
+    <Content Include="images\Admin\Icons\icon_Hien.png" />
     <Content Include="images\arrow.png" />
     <Content Include="images\arrow2.gif" />
     <Content Include="images\arrows.png" />
@@ -260,6 +264,12 @@
     <Content Include="images\tintuc2.jpg" />
     <Content Include="images\tintuc3.jpg" />
     <Content Include="images\uk.png" />
+    <Content Include="images\Upload\avatars.jpg" />
+    <Content Include="images\Admin\Logo\cover-name.png" />
+    <Content Include="images\Admin\Logo\cover.png" />
+    <Content Include="images\Admin\Logo\default-name.png" />
+    <Content Include="images\Admin\Logo\default.png" />
+    <Content Include="images\Admin\Logo\profile.png" />
     <Content Include="images\us.png" />
     <Content Include="images\van1.jpg" />
     <Content Include="images\vanshc.jpg" />
@@ -278,11 +288,6 @@
     <Content Include="images\s_arrow.psd" />
     <Content Include="images\Thumbs.db" />
     <Content Include="images\tw.psd" />
-    <Content Include="Models\dbShopGiay.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbShopGiay.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="fonts\poppins\poppins-v5-latin-100.eot" />
     <Content Include="fonts\poppins\poppins-v5-latin-100.ttf" />
     <Content Include="fonts\poppins\poppins-v5-latin-100.woff" />
@@ -371,9 +376,6 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <None Include="Models\dbShopGiay.dbml.layout">
-      <DependentUpon>dbShopGiay.dbml</DependentUpon>
-    </None>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -381,6 +383,14 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\easing.js" />
+    <Content Include="Models\dbShopGiay.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbShopGiay.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\dbShopGiay.dbml.layout">
+      <DependentUpon>dbShopGiay.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -655,6 +665,8 @@
     <Content Include="Views\Admin\ChiTietThuongHieu.cshtml" />
     <Content Include="Views\Admin\XoaThuongHieu.cshtml" />
     <Content Include="Views\Admin\SuaThuonghieu.cshtml" />
+    <Content Include="Views\Admin\Account.cshtml" />
+    <Content Include="Views\Admin\ListAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

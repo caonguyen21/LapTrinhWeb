@@ -10,6 +10,20 @@
     <title>Login</title>
     <link href="~/Content/font-face.css" rel="stylesheet" media="all">
     <link href="~/Content/theme.css" rel="stylesheet" media="all">
+    <!-- Fontfaces CSS-->
+    <link href="~/Content/font-face.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href="~/Content/theme.css" rel="stylesheet" media="all">
 </head>
 <body class="animsition">
     <div class="page-wrapper">
@@ -17,32 +31,50 @@
             <div class="wrap" style="padding-left: 500px; padding-right: 500px; padding-top: 200px ">
                 <div class="login-content">
                     <div class="login-logo">
-                        <h1>Admin</h1>
+                        <h1>ADMINISTRATOR</h1>
                     </div>
                     <div class="login-form">
                         @using (Html.BeginForm())
                         {
                             @Html.ValidationSummary(true)
                             <div class="form-group">
-                                <label>Admin Acount</label>
-                                <input class="au-input au-input--full" type="text" name="username" placeholder="Tài khoản" id="form-username">
-                                @ViewData["Loi1"]
+                                <label>Acount</label>
+                                <input type="text" id="txt_Username" name="txt_Username" class="au-input au-input--full" required="required" maxlength="30" placeholder="Tài khoản" />
 
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input class="au-input au-input--full" type="password" name="password" placeholder="Mật khẩu" id="form-password">
-                                @ViewData["Loi2"]
+                                <input type="password" id="txt_Password" name="txt_Password" class="au-input au-input--full" required="required" placeholder="Mật khẩu" />
                             </div>
+                            <label>
+                                <a href="#">Forgotten Password?</a>
+                            </label>
                             <br />
                             <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
                         }
                     </div>
-                    <h4 style="color:red; text-align:center">@ViewBag.Thongbao</h4>
                 </div>
             </div>
         </div>
 
     </div>
+    <!-- Jquery JS-->
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- ~/vendor JS       -->
+    <script src="~/vendor/slick/slick.min.js"></script>
+    <script src="~/vendor/wow/wow.min.js"></script>
+    <script src="~/vendor/animsition/animsition.min.js"></script>
+    <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!-- Main JS-->
+    <script src="~/Scripts/main.js"></script>
 </body>
 </html>

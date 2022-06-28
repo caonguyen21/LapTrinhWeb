@@ -17,12 +17,52 @@
     <link href="~/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="~/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-
     <!-- Main CSS-->
     <link href="~/Content/theme.css" rel="stylesheet" media="all">
+    <style>
+        .dropbtn {
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #f1f1f1;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
 </head>
-
 <body class="animsition">
     <div class="page-wrapper">
         <!-- menu-->
@@ -61,7 +101,7 @@
                             </li>
 
                             <li class="has-sub">
-                                <a href="#">QUẢN LÝ NHÂN VIÊN</a>
+                                <a href="/Admin/ListAdmin">QUẢN LÝ NHÂN VIÊN</a>
                             </li>
 
                             <li class="has-sub">
@@ -70,51 +110,16 @@
 
                         </ul>
                     </div>
-                   @* end menu*@
+                    @* end menu*@
                     <div class="header__tool">
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
-                                <!--<div class="image">-->
-                                @*  <img src="images/icon/avatar-01.jpg" alt="John Doe" />*@
-                                <!--</div>-->
-                                <div class="content">
-                                    <a class="js-acc-btn" href="#">Admin</a>
-                                </div>
-                                <div class="account-dropdown js-dropdown">
-                                    <div class="info clearfix">
-                                        <!--<div class="image">
-                                            <a href="#">-->
-                                        @* <img src="images/icon/avatar-01.jpg" alt="John Doe" />*@
-                                        <!--</a>
-                                        </div>-->
-                                        <div class="content">
-                                            <h5 class="name">
-                                                <a href="#">Admin</a>
-                                            </h5>
-                                            <span class="email">Admin@gmail.com</span>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Tài khoản
-                                            </a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Cài đặt
-                                            </a>
-                                        </div>
-                                        @*<div class="account-dropdown__item">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-money-box"></i>Billing
-                                                </a>
-                                            </div>*@
-                                    </div>
-                                    <div class="account-dropdown__footer">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-power"></i>Đăng xuất
-                                        </a>
+                                <div class="dropdown" style="float:right;">
+                                    <button class="dropbtn">Admin &#x2193</button>
+                                    <div class="dropdown-content">
+                                        <a href="/Admin/Account">Thông tin</a>
+                                        <a href="#">Đổi mật khẩu</a>
+                                        <a href="/Admin/Logout">Đăng xuất</a>
                                     </div>
                                 </div>
                             </div>
@@ -140,9 +145,7 @@
             </section>
             <!-- END COPYRIGHT-->
         </div>
-
     </div>
-
     <!-- Jquery JS-->
     <script src="~/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
@@ -151,7 +154,6 @@
     <!-- ~/vendor JS       -->
     <script src="~/vendor/slick/slick.min.js"></script>
     <script src="~/vendor/wow/wow.min.js"></script>
-@*    <script src="~/vendor/animsition/animsition.min.js"></script>*@
     <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
     <script src="~/vendor/counter-up/jquery.counterup.min.js"></script>
@@ -167,3 +169,4 @@
 
 </html>
 <!-- end document-->
+

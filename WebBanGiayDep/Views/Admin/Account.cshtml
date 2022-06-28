@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .Hinh {
+        border-radius: 50%;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+        border: 3px solid #c7b89e;
+    }
+</style>
+
+<h2>Account</h2>
+
+@using (Html.BeginForm("Account", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style="padding: 20px;">
+        <table style="width: 700px;">
+            <tr>
+                <td >Tên Đăng nhập:</td>
+                <td >
+                    <input type="text" id="txt_Username" name="txt_Username"  style="width:400px" disabled="disabled" value="@Model.TaiKhoanQL" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-Left">Mật khẩu:</td>
+                <td >
+                    <input type="password" id="txt_Password" name="txt_Password" style="width:400px" disabled="disabled" value="@Model.MatKhau" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-Left">Hình đại diện:</td>
+                <td >
+                    <img id="img_HinhDD" class="Hinh" style="vertical-align:middle; width:160px;height:160px" src="@Model.Avatar" />
+                    <input type="file" id="FileUpload" name="FileUpload" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-Left">Email:</td>
+                <td >
+                    <input type="email" id="txt_Email" name="txt_Email"  style="width:400px" placeholder="ex: admin@gmail.com" required="required" value="@Model.EmailQL" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-Left">Họ tên:</td>
+                <td >
+                    <input type="text" id="txt_HoTen" name="txt_HoTen"  required="required" style="width:400px" value="@Model.HoTen" maxlength="50" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-Left">Điện thoại:</td>
+                <td >
+                    <input type="text" id="txt_DienThoai" name="txt_DienThoai"  maxlength="10" style="width:400px" required="required" value="@Model.DienThoaiQL"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <input class="btn btn-success" id="NhapLai" type="reset" value="Nhập lại">
+                    <input class="btn btn-success" type="submit" id="btn_Sumit" name="btn_Sumit" value="Lưu chỉnh sửa">
+                </td>
+            </tr>
+        </table>
+    </div>
+}
