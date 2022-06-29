@@ -304,6 +304,72 @@ namespace WebBanGiayDep.Controllers
             Response.Write(Hinh);
         }
         #endregion
+        #region Quản lý thương hiệu
+        //Hàm Update Phân quyền cho quản trị:(ở đây sử dụng hàm void để Response.Write hình update lại)
+        [HttpPost]
+        public void UpdatePQ_ThuongHieu(int id)
+        {
+            var PQ = (from ad in data.PHANQUYENs where ad.MaQL == id select ad).SingleOrDefault();
+            string Hinh = "";
+            if (PQ.QL_ThuongHieu == true)
+            {
+                PQ.QL_ThuongHieu = false;
+                Hinh = "/images/Admin/Icons/block.png";
+            }
+            else
+            {
+                PQ.QL_ThuongHieu = true;
+                Hinh = "/images/Admin/Icons/accept.png";
+            }
+            UpdateModel(PQ);
+            data.SubmitChanges();
+            Response.Write(Hinh);
+        }
+        #endregion
+        #region Quản lý loại giày
+        //Hàm Update Phân quyền cho quản trị:(ở đây sử dụng hàm void để Response.Write hình update lại)
+        [HttpPost]
+        public void UpdatePQ_LoaiGiay(int id)
+        {
+            var PQ = (from ad in data.PHANQUYENs where ad.MaQL == id select ad).SingleOrDefault();
+            string Hinh = "";
+            if (PQ.QL_LoaiGiay == true)
+            {
+                PQ.QL_LoaiGiay = false;
+                Hinh = "/images/Admin/Icons/block.png";
+            }
+            else
+            {
+                PQ.QL_LoaiGiay = true;
+                Hinh = "/images/Admin/Icons/accept.png";
+            }
+            UpdateModel(PQ);
+            data.SubmitChanges();
+            Response.Write(Hinh);
+        }
+        #endregion
+        #region Quản lý ý kiến khách hàng
+        //Hàm Update Phân quyền cho quản trị:(ở đây sử dụng hàm void để Response.Write hình update lại)
+        [HttpPost]
+        public void UpdatePQ_YKienKhachHang(int id)
+        {
+            var PQ = (from ad in data.PHANQUYENs where ad.MaQL == id select ad).SingleOrDefault();
+            string Hinh = "";
+            if (PQ.QL_YKienKhachHang == true)
+            {
+                PQ.QL_YKienKhachHang = false;
+                Hinh = "/images/Admin/Icons/block.png";
+            }
+            else
+            {
+                PQ.QL_YKienKhachHang = true;
+                Hinh = "/images/Admin/Icons/accept.png";
+            }
+            UpdateModel(PQ);
+            data.SubmitChanges();
+            Response.Write(Hinh);
+        }
+        #endregion
         #region CreateAdmin
         public ActionResult CreateAdmin()
         {
@@ -364,7 +430,7 @@ namespace WebBanGiayDep.Controllers
                 if (FileUpload != null && FileUpload.ContentLength > 0)
                 {
                     string _FileName = Path.GetFileName(FileUpload.FileName);
-                    string _Path = Path.Combine(Server.MapPath("~/Content/Images/Upload/"), _FileName);
+                    string _Path = Path.Combine(Server.MapPath("/images/Upload/"), _FileName);
                     if (FileUpload.ContentLength > 1 * 1024 * 1024)
                     {
                         return Content("<script>alert('Kích thước của tập tin không được vượt quá 1 MB!');window.location='/Admin/CreateAdmin';</script>");
@@ -380,7 +446,7 @@ namespace WebBanGiayDep.Controllers
                 }
                 else
                 {
-                    ad.Avatar = "/images/Upload/avatars";
+                    ad.Avatar = "/images/Upload/avatars.jpg";
                 }
                 ad.TrangThai = true;
                 data.QUANLies.InsertOnSubmit(ad);

@@ -34,6 +34,28 @@
         margin-top: 10px;
         width: 600px;
     }
+    .number_ne {
+        border-left: 1px solid #C0C0C0;
+        border-right: 1px solid #E9E9E9;
+        border-top: 1px solid #C0C0C0;
+        border-bottom: 1px solid #E9E9E9;
+        font-family: Calibri,'Trebuchet MS',Verdana,Geneva,Arial,Helvetica,sans-serif;
+        color: #000;
+        background-color: #FFF;
+        padding: 3px;
+        margin-bottom: 2px;
+        border-radius: 4px;
+        outline: 0px none;
+        font-size: 13px;
+        width: 500px;
+    }
+
+        .number_ne:focus, .number_ne.Focus {
+            border-bottom-color: #E6E6E6;
+            background: url('../Content/Images/bg_Texbox.png') repeat-x scroll 0% 0% #FFFFF0;
+            border-top-color: #969696;
+            box-shadow: 0px 0px 4px #5C9CDF;
+        }
 </style>
 @using (Html.BeginForm("CreateAdmin", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -81,15 +103,9 @@
             </td>
         </tr>
         <tr>
-            <td class="Left">Địa chỉ:</td>
-            <td class="Right">
-                <input type="text" id="txt_DiaChi" name="txt_DiaChi" class="textCtrl" required="required" />
-            </td>
-        </tr>
-        <tr>
             <td class="Left">Điện thoại:</td>
             <td class="Right">
-                <input type="text" id="txt_DienThoai" name="txt_DienThoai" class="number_ne" maxlength="1" required="required" title="Vui lòng nhập số điện thoại đúng định dạng 10 số !" />
+                <input type="text" id="txt_DienThoai" name="txt_DienThoai" class="number_ne" maxlength="10" required="required" title="Vui lòng nhập số điện thoại đúng định dạng 10 số !" />
             </td>
         </tr>
         <tr>
@@ -98,48 +114,48 @@
             </td>
         </tr>
         <tr>
-            <td>Phân quyền quản trị:</td>
-            <td>
-                <table>
-                    <tr>
-                        <th>
+            <td class="auto-Left" style="padding: 0">Phân quyền quản trị:</td>
+            <td class="auto-Right">
+                <table style="width: 550px">
+                    <tr style="text-align: left">
+                        <th style="font-weight: normal">
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen1" checked="checked" />Quản lý Admin
                             </label>
                         </th>
-                        <th>
+                        <th style="font-weight: normal">
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen2" checked="checked" /> Quản lý nhà cung cấp
                             </label>
                         </th>
-                        <th>
+                        <th style="font-weight: normal">
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen3" checked="checked" /> Quản lý sản phẩm
                             </label>
                         </th>
-                        <th>
+                        <th style="font-weight: normal">
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen4" checked="checked" />Quản lý thương hiệu
                             </label>
                         </th>
                     </tr>
-                    <tr>
-                        <th>
+                    <tr style="text-align: left;height:40px">
+                        <th style="font-weight: normal">
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen5" checked="checked" />Quản lý loại giày
                             </label>
                         </th>
-                        <th>
+                        <th style="font-weight: normal">
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen6" checked="checked" />Quản lý đơn hàng
                             </label>
                         </th>
-                        <th>
+                        <th style="font-weight: normal">
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen7" checked="checked" />Quản lý khách hàng
                             </label>
                         </th>
-                        <th>
+                        <th style="font-weight: normal">
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen8" checked="checked" />Quản lý ý kiến khách hàng
                             </label>
@@ -150,7 +166,7 @@
         </tr>
     </table>
     <div style="text-align: center">
-        <input type="reset" class="button_ne" value=" Nhập lại " />
-        <input type="submit" class="button_ne" value=" Đăng ký " />
+        <input class="btn btn-success" id="NhapLai" type="reset" value="Nhập lại">
+        <input class="btn btn-success" type="submit" id="btn_Sumit" name="btn_Sumit" value="Xác nhận">
     </div>
 }

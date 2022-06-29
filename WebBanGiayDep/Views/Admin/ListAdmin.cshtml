@@ -22,7 +22,7 @@
 <script type="text/javascript">
     $(function () {
 
-// quản lý trạng thái của admin
+        // quản lý trạng thái của admin
         $(".AnHienClick").click(function () {
             var _AD = $(this).attr("data-id");
             $.post("/Admin/UpdateTrangThai", { "id": _AD },
@@ -30,7 +30,7 @@
                     $('#img_AnHien-' + _AD).attr('src', data);
                 });
         });
-//quản lý quyền admin nhà cung cấp
+        //quản lý quyền admin nhà cung cấp
         $(".PQ_NhaSanXuat").click(function () {
             var _AD = $(this).attr("data-id");
             $.post("/Admin/UpdatePQ_NhaSanXuat", { "id": _AD },
@@ -38,7 +38,7 @@
                     $('#img_PQ_NhaSanXuat-' + _AD).attr('src', data);
                 });
         });
-//quản lý quyền admin sản phẩm
+        //quản lý quyền admin sản phẩm
         $(".PQ_SanPham").click(function () {
             var _AD = $(this).attr("data-id");
             $.post("/Admin/UpdatePQ_SanPham", { "id": _AD },
@@ -46,7 +46,7 @@
                     $('#img_PQ_SanPham-' + _AD).attr('src', data);
                 });
         });
- //quản lý quyền admin khách hàng
+        //quản lý quyền admin khách hàng
         $(".PQ_KhachHang").click(function () {
             var _AD = $(this).attr("data-id");
             $.post("/Admin/UpdatePQ_KhachHang", { "id": _AD },
@@ -54,7 +54,7 @@
                     $('#img_PQ_KhachHang-' + _AD).attr('src', data);
                 });
         });
-//quản lý quyền admin đơn hàng
+        //quản lý quyền admin đơn hàng
         $(".PQ_DonHang").click(function () {
             var _AD = $(this).attr("data-id");
             $.post("/Admin/UpdatePQ_DonHang", { "id": _AD },
@@ -62,12 +62,36 @@
                     $('#img_PQ_DonHang-' + _AD).attr('src', data);
                 });
         });
-//quản lý quyền admin 
+        //quản lý quyền admin 
         $(".PQ_QuanTriAdmin").click(function () {
             var _AD = $(this).attr("data-id");
             $.post("/Admin/UpdatePQ_QuanTriAdmin", { "id": _AD },
                 function (data) {
                     $('#img_PQ_QuanTriAdmin-' + _AD).attr('src', data);
+                });
+        });
+        //quản lý thương hiệu
+        $(".PQ_QuanTriThuongHieu").click(function () {
+            var _AD = $(this).attr("data-id");
+            $.post("/Admin/UpdatePQ_QuanTriThuongHieu", { "id": _AD },
+                function (data) {
+                    $('#img_PQ_QuanTriThuongHieu-' + _AD).attr('src', data);
+                });
+        });
+        //quản lý loại giày
+        $(".PQ_QuanTriLoaiGiay").click(function () {
+            var _AD = $(this).attr("data-id");
+            $.post("/Admin/UpdatePQ_QuanTriLoaiGiay", { "id": _AD },
+                function (data) {
+                    $('#img_PQ_QuanTriLoaiGiay-' + _AD).attr('src', data);
+                });
+        });
+        //quản lý ý kiến khách hàng
+        $(".PQ_QuanTriYKienKhachHang").click(function () {
+            var _AD = $(this).attr("data-id");
+            $.post("/Admin/UpdatePQ_QuanTriYKienKhachHang", { "id": _AD },
+                function (data) {
+                    $('#img_PQ_QuanTriYKienKhachHang-' + _AD).attr('src', data);
                 });
         });
 </script>
@@ -93,11 +117,14 @@
     <td style="text-align: center">
         <table style="margin: 0 auto">
             <tr>
-                <td class="Top" style="border-left: 1px solid #d0d0d0;">Nhà sản xuất</td>
+                <td class="Top" style="border-left: 1px solid #d0d0d0;">Nhà cung cấp</td>
                 <td class="Top">Sản phẩm</td>
                 <td class="Top">Khách hàng</td>
                 <td class="Top">Đơn hàng</td>
                 <td class="Top">Quản trị Admin</td>
+                <td class="Top">Thương hiệu</td>
+                <td class="Top">Loại giày</td>
+                <td class="Top">Ý kiến khách hàng</td>
             </tr>
             <tr>
                 <td class="Bottom">
@@ -167,6 +194,48 @@
                     {
                         <a href="#" class="PQ_QuanTriAdmin" data-id="@item.MaQL">
                             <img src="~/images/Admin/Icons/block.png" id="img_PQ_QuanTriAdmin-@item.MaQL" title="Không" />
+                        </a>
+                    }
+                </td>
+                <td class="Bottom">
+                    @if (item.QL_ThuongHieu == true)
+                    {
+                        <a href="#" class="PQ_QuanTriThuongHieu" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/accept.png" id="img_PQ_QuanTriThuongHieu-@item.MaQL" title="Có" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" class="PQ_QuanTriThuongHieu" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/block.png" id="img_PQ_QuanTriThuongHieu-@item.MaQL" title="Không" />
+                        </a>
+                    }
+                </td>
+                <td class="Bottom">
+                    @if (item.QL_LoaiGiay == true)
+                    {
+                        <a href="#" class="PQ_QuanTriLoaiGiay" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/accept.png" id="img_PQ_QuanTriLoaiGiay-@item.MaQL" title="Có" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" class="PQ_QuanTriLoaiGiay" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/block.png" id="img_PQ_QuanTriLoaiGiay-@item.MaQL" title="Không" />
+                        </a>
+                    }
+                </td>
+                <td class="Bottom">
+                    @if (item.QL_YKienKhachHang == true)
+                    {
+                        <a href="#" class="PQ_QuanTriYKienKhachHang" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/accept.png" id="img_PQ_QuanTriYKienKhachHang-@item.MaQL" title="Có" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" class="PQ_QuanTriYKienKhachHang" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/block.png" id="img_PQ_QuanTriYKienKhachHang-@item.MaQL" title="Không" />
                         </a>
                     }
                 </td>
