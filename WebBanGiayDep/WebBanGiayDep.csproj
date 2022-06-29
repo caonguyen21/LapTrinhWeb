@@ -195,6 +195,7 @@
     <Content Include="images\adidasstanmith.jpg" />
     <Content Include="images\Admin\Icons\accept.png" />
     <Content Include="images\Admin\Icons\add.png" />
+    <Content Include="images\Admin\Icons\block.png" />
     <Content Include="images\Admin\Icons\icon_An.png" />
     <Content Include="images\Admin\Icons\icon_Hien.png" />
     <Content Include="images\arrow.png" />
@@ -667,6 +668,7 @@
     <Content Include="Views\Admin\SuaThuonghieu.cshtml" />
     <Content Include="Views\Admin\Account.cshtml" />
     <Content Include="Views\Admin\ListAdmin.cshtml" />
+    <Content Include="Views\Admin\CreateAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,111 +19,58 @@
         padding: 0px 10px 10px 10px;
     }
 </style>
-@*Scrip thực hiện Update lại Trạng thái và Quyền quản trị*@
 <script type="text/javascript">
     $(function () {
 
-        //============================Trạng Thái============================
-        //Thực hiện Cập nhật khi Click <a href="#" class="AnHienClick">
+// quản lý trạng thái của admin
         $(".AnHienClick").click(function () {
-            //Lấy Mã Admin từ liên kết Click <a href> trên
             var _AD = $(this).attr("data-id");
-
-            // Thực hiện xử lý Ajax: gọi hàm UpdateMember để xử lý
             $.post("/Admin/UpdateTrangThai", { "id": _AD },
-
                 function (data) {
-                    //Thực hiện cập nhật lại Url hình ẩn hiện
                     $('#img_AnHien-' + _AD).attr('src', data);
                 });
         });
-        //============================PQ_NhaSanXuat============================
-        //Thực hiện Cập nhật khi Click <a href="#" class="...">
+//quản lý quyền admin nhà cung cấp
         $(".PQ_NhaSanXuat").click(function () {
-            //Lấy Mã Admin từ liên kết Click <a href> trên
             var _AD = $(this).attr("data-id");
-
-            // Thực hiện xử lý Ajax: gọi hàm Update phân quyền để xử lý
             $.post("/Admin/UpdatePQ_NhaSanXuat", { "id": _AD },
-
                 function (data) {
-                    //Thực hiện cập nhật lại Url hình ẩn hiện
                     $('#img_PQ_NhaSanXuat-' + _AD).attr('src', data);
                 });
         });
-        //============================PQ_SanPham============================
-        //Thực hiện Cập nhật khi Click <a href="#" class="...">
+//quản lý quyền admin sản phẩm
         $(".PQ_SanPham").click(function () {
-            //Lấy Mã Admin từ liên kết Click <a href> trên
             var _AD = $(this).attr("data-id");
-
-            // Thực hiện xử lý Ajax: gọi hàm Update phân quyền để xử lý
             $.post("/Admin/UpdatePQ_SanPham", { "id": _AD },
-
                 function (data) {
-                    //Thực hiện cập nhật lại Url hình ẩn hiện
                     $('#img_PQ_SanPham-' + _AD).attr('src', data);
                 });
         });
-        //============================PQ_KhachHang============================
-        //Thực hiện Cập nhật khi Click <a href="#" class="...">
+ //quản lý quyền admin khách hàng
         $(".PQ_KhachHang").click(function () {
-            //Lấy Mã Admin từ liên kết Click <a href> trên
             var _AD = $(this).attr("data-id");
-
-            // Thực hiện xử lý Ajax: gọi hàm Update phân quyền để xử lý
             $.post("/Admin/UpdatePQ_KhachHang", { "id": _AD },
-
                 function (data) {
-                    //Thực hiện cập nhật lại Url hình ẩn hiện
                     $('#img_PQ_KhachHang-' + _AD).attr('src', data);
                 });
         });
-        //============================PQ_DonHang============================
-        //Thực hiện Cập nhật khi Click <a href="#" class="...">
+//quản lý quyền admin đơn hàng
         $(".PQ_DonHang").click(function () {
-            //Lấy Mã Admin từ liên kết Click <a href> trên
             var _AD = $(this).attr("data-id");
-
-            // Thực hiện xử lý Ajax: gọi hàm Update phân quyền để xử lý
             $.post("/Admin/UpdatePQ_DonHang", { "id": _AD },
-
                 function (data) {
-                    //Thực hiện cập nhật lại Url hình ẩn hiện
                     $('#img_PQ_DonHang-' + _AD).attr('src', data);
                 });
         });
-        //============================PQ_QuanTriAdmin============================
-        //Thực hiện Cập nhật khi Click <a href="#" class="...">
+//quản lý quyền admin 
         $(".PQ_QuanTriAdmin").click(function () {
-            //Lấy Mã Admin từ liên kết Click <a href> trên
             var _AD = $(this).attr("data-id");
-
-            // Thực hiện xử lý Ajax: gọi hàm Update phân quyền để xử lý
             $.post("/Admin/UpdatePQ_QuanTriAdmin", { "id": _AD },
-
                 function (data) {
-                    //Thực hiện cập nhật lại Url hình ẩn hiện
                     $('#img_PQ_QuanTriAdmin-' + _AD).attr('src', data);
                 });
         });
 </script>
-
-@*roadlinktop*@
-<ul class="roadlinktop">
-    <li>
-        <a href="/Admin">
-            <img src="~/Content/Admin/Images/ico_adminhome.png" />
-        </a>
-    </li>
-    <li>
-        <a href="/Admin/ListAdmin">
-            <span>Quản trị Administrator</span>
-        </a>
-    </li>
-</ul>
-
-<div class="title_ne1">DANH SÁCH QUẢN TRỊ WEBSITE</div>
 @using (Html.BeginForm())
 {
 <table border="1" style="width: 984px; border: 1px solid #d0d0d0; border-collapse: collapse;">
@@ -135,227 +82,120 @@
     </tr>
     @foreach (var item in Model)
     {
-        <td style="text-align: center">@item.MaQL</td>
-        <tr>
-            <td style="text-align: center">
-                <img src="@item.QUAN" class="Avatar" style="width:100px;height:100px" />
-                <br />
-                <label>@item.QUANLY.TaiKhoanQL</label>
-            </td>
-            <!--Cột phân quyền Admin-->
-            <td style="text-align: center">
-                <table style="margin: 0 auto">
-                    <tr>
-                        <td class="Top" style="border-left: 1px solid #d0d0d0;">Nhà sản xuất</td>
-                        <td class="Top">Sản phẩm</td>
-                        <td class="Top">Khách hàng</td>
-                        <td class="Top">Đơn hàng</td>
-                        <td class="Top">Tin tức</td>
-                        <td class="Top">Menu</td>
-                    </tr>
-                    <tr>
-                        <td class="Bottom">
-                            @if (item.QL_NhaCungCap == true)
-                            {
-                                <a href="#" class="PQ_NhaSanXuat" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_NhaSanXuat-@item.MaAdmin" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_NhaSanXuat" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_NhaSanXuat-@item.MaAdmin" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_SanPham == true)
-                            {
-                                <a href="#" class="PQ_SanPham" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_SanPham-@item.MaAdmin" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_SanPham" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_SanPham-@item.MaAdmin" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_KhachHang == true)
-                            {
-                                <a href="#" class="PQ_KhachHang" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_KhachHang-@item.MaAdmin" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_KhachHang" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_KhachHang-@item.MaAdmin" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_DonHang == true)
-                            {
-                                <a href="#" class="PQ_DonHang" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_DonHang-@item.MaAdmin" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_DonHang" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_DonHang-@item.MaAdmin" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_TinTuc == true)
-                            {
-                                <a href="#" class="PQ_TinTuc" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_TinTuc-@item.MaAdmin" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_TinTuc" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_TinTuc-@item.MaAdmin" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_Menu == true)
-                            {
-                                <a href="#" class="PQ_Menu" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_Menu-@item.MaAdmin" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_Menu" data-id="@item.MaAdmin">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_Menu-@item.MaAdmin" title="Không" />
-                                </a>
-                            }
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="Top" style="border-left: 1px solid #d0d0d0;">Quảng cáo</td>
-                        <td class="Top">Liên hệ</td>
-                        <td class="Top">Giới thiệu</td>
-                        <td class="Top">Quản trị Admin</td>
-                        <td class="Top">Site Map</td>
-                        <td class="Top">Slider</td>
-                    </tr>
-                    <tr>
-                        <td class="Bottom">
-                            @if (item.PQ_QuangCao == true)
-                            {
-                                <a href="#" class="PQ_QuangCao" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_QuangCao-@item.MaQL" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_QuangCao" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_QuangCao-@item.MaQL" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_LienHe == true)
-                            {
-                                <a href="#" class="PQ_LienHe" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_LienHe-@item.MaQL" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_LienHe" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_LienHe-@item.MaQL" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_GioiThieu == true)
-                            {
-                                <a href="#" class="PQ_GioiThieu" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_GioiThieu-@item.MaQL" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_GioiThieu" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_GioiThieu-@item.MaQL" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_QuanTriAdmin == true)
-                            {
-                                <a href="#" class="PQ_QuanTriAdmin" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_QuanTriAdmin-@item.MaQL" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_QuanTriAdmin" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_QuanTriAdmin-@item.MaQL" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_SiteMap == true)
-                            {
-                                <a href="#" class="PQ_SiteMap" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_SiteMap-@item.MaQL" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_SiteMap" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_SiteMap-@item.MaQL" title="Không" />
-                                </a>
-                            }
-                        </td>
-                        <td class="Bottom">
-                            @if (item.PQ_Slider == true)
-                            {
-                                <a href="#" class="PQ_Slider" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/accept.png" id="img_PQ_Slider-@item.MaQL" title="Có" />
-                                </a>
-                            }
-                            else
-                            {
-                                <a href="#" class="PQ_Slider" data-id="@item.MaQL">
-                                    <img src="/Content/Admin/Images/block.png" id="img_PQ_Slider-@item.MaQL" title="Không" />
-                                </a>
-                            }
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            @*============END Cột phân quyền Admin============*@
-            <td style="text-align: center">
-                @if (item.MaQL.AnHien == true)
-                {
-                    <a href="#" class="AnHienClick" data-id="@item.MaQL">
-                        <img src="~/images/Admin/Icons/icon_Hien.png" id="img_AnHien-@item.MaQL" title="Hiện" />
-                    </a>
-                }
-                else
-                {
-                    <a href="#" class="AnHienClick" data-id="@item.MaQL">
-                        <img src="~/images/Admin/Icons/icon_An.png" id="img_AnHien-@item.MaQL" title="Ẩn" />
-                    </a>
-                }
-            </td>
-        </tr>
+<tr>
+    <td style="text-align: center">@item.MaQL</td>
+    <td style="text-align: center">
+        <img src="@item.QUANLY.Avatar" class="Avatar" style="width:100px;height:100px" />
+        <br />
+        <label>@item.QUANLY.TaiKhoanQL</label>
+    </td>
+    <!--Cột phân quyền Admin-->
+    <td style="text-align: center">
+        <table style="margin: 0 auto">
+            <tr>
+                <td class="Top" style="border-left: 1px solid #d0d0d0;">Nhà sản xuất</td>
+                <td class="Top">Sản phẩm</td>
+                <td class="Top">Khách hàng</td>
+                <td class="Top">Đơn hàng</td>
+                <td class="Top">Quản trị Admin</td>
+            </tr>
+            <tr>
+                <td class="Bottom">
+                    @if (item.QL_NhaCungCap == true)
+                    {
+                        <a href="#" class="PQ_NhaSanXuat" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/accept.png" id="img_PQ_NhaSanXuat-@item.MaQL" title="Có" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" class="PQ_NhaSanXuat" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/block.png" id="img_PQ_NhaSanXuat-@item.MaQL" title="Không" />
+                        </a>
+                    }
+                </td>
+                <td class="Bottom">
+                    @if (item.QL_SanPham == true)
+                    {
+                        <a href="#" class="PQ_SanPham" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/accept.png" id="img_PQ_SanPham-@item.MaQL" title="Có" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" class="PQ_SanPham" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/block.png" id="img_PQ_SanPham-@item.MaQL" title="Không" />
+                        </a>
+                    }
+                </td>
+                <td class="Bottom">
+                    @if (item.QL_KhachHang == true)
+                    {
+                        <a href="#" class="PQ_KhachHang" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/accept.png" id="img_PQ_KhachHang-@item.MaQL" title="Có" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" class="PQ_KhachHang" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/block.png" id="img_PQ_KhachHang-@item.MaQL" title="Không" />
+                        </a>
+                    }
+                </td>
+                <td class="Bottom">
+                    @if (item.QL_DonHang == true)
+                    {
+                        <a href="#" class="PQ_DonHang" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/accept.png" id="img_PQ_DonHang-@item.MaQL" title="Có" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" class="PQ_DonHang" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/block.png" id="img_PQ_DonHang-@item.MaQL" title="Không" />
+                        </a>
+                    }
+                </td>
+                <td class="Bottom">
+                    @if (item.QL_Admin == true)
+                    {
+                        <a href="#" class="PQ_QuanTriAdmin" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/accept.png" id="img_PQ_QuanTriAdmin-@item.MaQL" title="Có" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" class="PQ_QuanTriAdmin" data-id="@item.MaQL">
+                            <img src="~/images/Admin/Icons/block.png" id="img_PQ_QuanTriAdmin-@item.MaQL" title="Không" />
+                        </a>
+                    }
+                </td>
+            </tr>
+        </table>
+    </td>
+    <!--End cột phân quyền Admin-->
+    <td style="text-align: center">
+        @if (item.QUANLY.TrangThai == true)
+        {
+            <a href="#" class="AnHienClick" data-id="@item.MaQL">
+                <img src="~/images/Admin/Icons/icon_Hien.png" id="img_AnHien-@item.MaQL" title="Hiện" />
+            </a>
+        }
+        else
+        {
+            <a href="#" class="AnHienClick" data-id="@item.MaQL">
+                <img src="~/images/Admin/Icons/icon_An.png" id="img_AnHien-@item.MaQL" title="Ẩn" />
+            </a>
+        }
+    </td>
+</tr>
     }
 </table>
 }
-<div style="text-align: center; margin-top: -53px; margin-left: -150px">
-    <button class="button_ne" onclick="location.href='@Url.Action("CreateAdmin", "Admin")'">Thêm Administrator</button>
+<div style="text-align: center">
+    @*<button class="button_ne" onclick="location.href='@Url.Action("CreateAdmin", "Admin")'">Thêm Administrator</button>*@
+    <a class="btn btn-primary" href="/Admin/CreateAdmin/" role="button">Create Admin</a>
 </div>
 
-@Html.PagedListPager(Model, Page => Url.Action("ListAdmin", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+@*@Html.PagedListPager(Model, Page => Url.Action("ListAdmin", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)*@

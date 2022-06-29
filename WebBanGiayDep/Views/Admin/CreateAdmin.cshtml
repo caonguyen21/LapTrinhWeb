@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "CreateAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm("CreateAdmin", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table style="width: 984px; border: 1px solid #d0d0d0; border-collapse: collapse;">
+        <tr>
+            <td >Tên Đăng nhập:</td>
+            <td >
+                <input type="text" id="txt_Username" name="txt_Username"   required="required" maxlength="50"  />
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-Left">Mật khẩu:</td>
+            <td class="auto-Right">
+                <input type="password" id="txt_Password" name="txt_Password"   required="required"  />
+            </td>
+        </tr>
+        <tr>
+            <td >Nhập lại mật khẩu:</td>
+            <td >
+                <input type="password" id="txt_NhapLaiPass" name="txt_NhapLaiPass"   required="required"  />
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td >Hình đại diện:</td>
+            <td >
+                <img id="img_HinhDD" style="vertical-align: middle; width: 160px; height: 160px" src="~/images/Upload/avatars.jpg" />
+                <input type="file" id="FileUpload" name="FileUpload" />
+            </td>
+        </tr>
+        <tr>
+            <td >Email:</td>
+            <td >
+                <input type="email" id="txt_Email" name="txt_Email"  placeholder="huynhgiahao1902@gmail.com" required="required" />
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-Left">Họ tên:</td>
+            <td class="auto-Right">
+                <input type="text" id="txt_HoTen" name="txt_HoTen"  required="required" maxlength="50" />
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-Left">Điện thoại:</td>
+            <td class="auto-Right">
+                <input type="text" id="txt_DienThoai" name="txt_DienThoai"  maxlength="10" required="required" />
+            </td>
+        </tr>
+        <tr>
+            <td>Phân quyền quản trị:</td>
+            <td >
+                <table >
+                    <tr >
+                        <th >
+                            <label>
+                                <input type="checkbox" value="DaChon" name="ckb_PhanQuyen1" checked="checked" />Quản lý Admin
+                            </label>
+                        </th>
+                        <th >
+                            <label>
+                                <input type="checkbox" value="DaChon" name="ckb_PhanQuyen2" checked="checked" /> Quản lý nhà cung cấp
+                            </label>
+                        </th>
+                        <th >
+                            <label>
+                                <input type="checkbox" value="DaChon" name="ckb_PhanQuyen3" checked="checked" /> Quản lý sản phẩm
+                            </label>
+                        </th>
+                        <th >
+                            <label>
+                                <input type="checkbox" value="DaChon" name="ckb_PhanQuyen4" checked="checked" />Quản lý thương hiệu
+                            </label>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th >
+                            <label>
+                                <input type="checkbox" value="DaChon" name="ckb_PhanQuyen5" checked="checked" />Quản lý loại giày
+                            </label>
+                        </th>
+                        <th >
+                            <label>
+                                <input type="checkbox" value="DaChon" name="ckb_PhanQuyen6" checked="checked" />Quản lý đơn hàng
+                            </label>
+                        </th>
+                        <th >
+                            <label>
+                                <input type="checkbox" value="DaChon" name="ckb_PhanQuyen7" checked="checked" />Quản lý khách hàng
+                            </label>
+                        </th>
+                        <th >
+                            <label>
+                                <input type="checkbox" value="DaChon" name="ckb_PhanQuyen8" checked="checked" />Quản lý ý kiến khách hàng
+                            </label>
+                        </th>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <input type="reset"  value=" Nhập lại " />
+        <input type="submit"  value=" Đăng ký " />
+    </div>
+}

@@ -1478,6 +1478,8 @@ namespace WebBanGiayDep.Models
 		
 		private bool _QL_YKienKhachHang;
 		
+		private EntityRef<QUANLY> _QUANLY;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1506,6 +1508,7 @@ namespace WebBanGiayDep.Models
 		
 		public PHANQUYEN()
 		{
+			this._QUANLY = default(EntityRef<QUANLY>);
 			OnCreated();
 		}
 		
@@ -1540,6 +1543,10 @@ namespace WebBanGiayDep.Models
 			{
 				if ((this._MaQL != value))
 				{
+					if (this._QUANLY.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaQLChanging(value);
 					this.SendPropertyChanging();
 					this._MaQL = value;
@@ -1709,6 +1716,40 @@ namespace WebBanGiayDep.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QUANLY_PHANQUYEN", Storage="_QUANLY", ThisKey="MaQL", OtherKey="MaQL", IsForeignKey=true)]
+		public QUANLY QUANLY
+		{
+			get
+			{
+				return this._QUANLY.Entity;
+			}
+			set
+			{
+				QUANLY previousValue = this._QUANLY.Entity;
+				if (((previousValue != value) 
+							|| (this._QUANLY.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._QUANLY.Entity = null;
+						previousValue.PHANQUYENs.Remove(this);
+					}
+					this._QUANLY.Entity = value;
+					if ((value != null))
+					{
+						value.PHANQUYENs.Add(this);
+						this._MaQL = value.MaQL;
+					}
+					else
+					{
+						this._MaQL = default(int);
+					}
+					this.SendPropertyChanged("QUANLY");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1752,6 +1793,8 @@ namespace WebBanGiayDep.Models
 		
 		private string _Avatar;
 		
+		private EntitySet<PHANQUYEN> _PHANQUYENs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1776,6 +1819,7 @@ namespace WebBanGiayDep.Models
 		
 		public QUANLY()
 		{
+			this._PHANQUYENs = new EntitySet<PHANQUYEN>(new Action<PHANQUYEN>(this.attach_PHANQUYENs), new Action<PHANQUYEN>(this.detach_PHANQUYENs));
 			OnCreated();
 		}
 		
@@ -1939,6 +1983,19 @@ namespace WebBanGiayDep.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QUANLY_PHANQUYEN", Storage="_PHANQUYENs", ThisKey="MaQL", OtherKey="MaQL")]
+		public EntitySet<PHANQUYEN> PHANQUYENs
+		{
+			get
+			{
+				return this._PHANQUYENs;
+			}
+			set
+			{
+				this._PHANQUYENs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1957,6 +2014,18 @@ namespace WebBanGiayDep.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_PHANQUYENs(PHANQUYEN entity)
+		{
+			this.SendPropertyChanging();
+			entity.QUANLY = this;
+		}
+		
+		private void detach_PHANQUYENs(PHANQUYEN entity)
+		{
+			this.SendPropertyChanging();
+			entity.QUANLY = null;
 		}
 	}
 	

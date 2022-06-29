@@ -77,6 +77,7 @@
       <Column Name="QL_DonHang" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="QL_KhachHang" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="QL_YKienKhachHang" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="QUANLY_PHANQUYEN" Member="QUANLY" ThisKey="MaQL" OtherKey="MaQL" Type="QUANLY" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.QUANLY" Member="QUANLies">
@@ -89,6 +90,7 @@
       <Column Name="DienThoaiQL" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="TrangThai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Avatar" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="QUANLY_PHANQUYEN" Member="PHANQUYENs" ThisKey="MaQL" OtherKey="MaQL" Type="PHANQUYEN" />
     </Type>
   </Table>
   <Table Name="dbo.SANPHAM" Member="SANPHAMs">
