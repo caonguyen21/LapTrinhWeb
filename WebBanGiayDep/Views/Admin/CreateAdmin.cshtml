@@ -2,97 +2,144 @@
     ViewBag.Title = "CreateAdmin";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style type="text/css">
+    .Left {
+        color: #141414;
+        text-align: right;
+        padding-top: 22px;
+    }
+
+    .Right {
+        width: 700px;
+        padding-top: 22px;
+        padding-left: 10px;
+    }
+
+    .Hinh {
+        border-radius: 50%;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+        border: 3px solid #c7b89e;
+    }
+
+    .textCtrl, .sdt {
+        width: 500px;
+    }
+
+    .getLine {
+        border-top: 1px solid #D7EDFC;
+        margin: auto;
+        margin-top: 10px;
+        width: 600px;
+    }
+</style>
 @using (Html.BeginForm("CreateAdmin", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <table style="width: 984px; border: 1px solid #d0d0d0; border-collapse: collapse;">
         <tr>
-            <td >Tên Đăng nhập:</td>
-            <td >
-                <input type="text" id="txt_Username" name="txt_Username"   required="required" maxlength="50"  />
+            <td class="Left">Tên Đăng nhập:</td>
+            <td class="Right">
+                <input type="text" id="txt_Username" name="txt_Username" class="textCtrl" required="required" maxlength="50" title="Tên đăng nhập tối thiểu có 6 ký tự và không được nhập ký tự đặc biệt !" />
             </td>
         </tr>
         <tr>
-            <td class="auto-Left">Mật khẩu:</td>
-            <td class="auto-Right">
-                <input type="password" id="txt_Password" name="txt_Password"   required="required"  />
+            <td class="Left">Mật khẩu:</td>
+            <td class="Right">
+                <input type="password" id="txt_Password" name="txt_Password" class="textCtrl" required="required" title="Mật khẩu của bạn tối thiểu có 6 ký tự và không được nhập ký tự đặc biệt !" />
             </td>
         </tr>
         <tr>
-            <td >Nhập lại mật khẩu:</td>
-            <td >
-                <input type="password" id="txt_NhapLaiPass" name="txt_NhapLaiPass"   required="required"  />
+            <td class="Left">Nhập lại mật khẩu:</td>
+            <td class="Right">
+                <input type="password" id="txt_NhapLaiPass" name="txt_NhapLaiPass" class="textCtrl" required="required" title="Mật khẩu nhập lại của bạn tối thiểu có 6 ký tự và không được nhập ký tự đặc biệt !" />
             </td>
         </tr>
         <tr>
+            <td colspan="2">
+                <div class="getLine"></div>
+            </td>
         </tr>
         <tr>
-            <td >Hình đại diện:</td>
-            <td >
-                <img id="img_HinhDD" style="vertical-align: middle; width: 160px; height: 160px" src="~/images/Upload/avatars.jpg" />
+            <td class="Left">Hình đại diện:</td>
+            <td class="Right">
+                <img id="img_HinhDD" class="Hinh" style="vertical-align: middle; width: 160px; height: 160px" src="~/images/Upload/avatars.jpg" />
                 <input type="file" id="FileUpload" name="FileUpload" />
             </td>
         </tr>
         <tr>
-            <td >Email:</td>
-            <td >
-                <input type="email" id="txt_Email" name="txt_Email"  placeholder="huynhgiahao1902@gmail.com" required="required" />
+            <td class="Left">Email:</td>
+            <td class="Right">
+                <input type="email" id="txt_Email" name="txt_Email" class="textCtrl" placeholder="ex: admin@gmail.com" required="required" />
             </td>
         </tr>
         <tr>
-            <td class="auto-Left">Họ tên:</td>
-            <td class="auto-Right">
-                <input type="text" id="txt_HoTen" name="txt_HoTen"  required="required" maxlength="50" />
+            <td class="Left">Họ tên:</td>
+            <td class="Right">
+                <input type="text" id="txt_HoTen" name="txt_HoTen" class="textCtrl" required="required" maxlength="50" title="Họ tên chỉ được nhập chữ !" />
             </td>
         </tr>
         <tr>
-            <td class="auto-Left">Điện thoại:</td>
-            <td class="auto-Right">
-                <input type="text" id="txt_DienThoai" name="txt_DienThoai"  maxlength="10" required="required" />
+            <td class="Left">Địa chỉ:</td>
+            <td class="Right">
+                <input type="text" id="txt_DiaChi" name="txt_DiaChi" class="textCtrl" required="required" />
+            </td>
+        </tr>
+        <tr>
+            <td class="Left">Điện thoại:</td>
+            <td class="Right">
+                <input type="text" id="txt_DienThoai" name="txt_DienThoai" class="number_ne" maxlength="1" required="required" title="Vui lòng nhập số điện thoại đúng định dạng 10 số !" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="getLine"></div>
             </td>
         </tr>
         <tr>
             <td>Phân quyền quản trị:</td>
-            <td >
-                <table >
-                    <tr >
-                        <th >
+            <td>
+                <table>
+                    <tr>
+                        <th>
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen1" checked="checked" />Quản lý Admin
                             </label>
                         </th>
-                        <th >
+                        <th>
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen2" checked="checked" /> Quản lý nhà cung cấp
                             </label>
                         </th>
-                        <th >
+                        <th>
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen3" checked="checked" /> Quản lý sản phẩm
                             </label>
                         </th>
-                        <th >
+                        <th>
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen4" checked="checked" />Quản lý thương hiệu
                             </label>
                         </th>
                     </tr>
                     <tr>
-                        <th >
+                        <th>
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen5" checked="checked" />Quản lý loại giày
                             </label>
                         </th>
-                        <th >
+                        <th>
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen6" checked="checked" />Quản lý đơn hàng
                             </label>
                         </th>
-                        <th >
+                        <th>
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen7" checked="checked" />Quản lý khách hàng
                             </label>
                         </th>
-                        <th >
+                        <th>
                             <label>
                                 <input type="checkbox" value="DaChon" name="ckb_PhanQuyen8" checked="checked" />Quản lý ý kiến khách hàng
                             </label>
@@ -102,8 +149,8 @@
             </td>
         </tr>
     </table>
-    <div>
-        <input type="reset"  value=" Nhập lại " />
-        <input type="submit"  value=" Đăng ký " />
+    <div style="text-align: center">
+        <input type="reset" class="button_ne" value=" Nhập lại " />
+        <input type="submit" class="button_ne" value=" Đăng ký " />
     </div>
 }

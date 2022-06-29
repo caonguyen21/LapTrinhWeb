@@ -192,10 +192,9 @@
     }
 </table>
 }
+<br>
 <div style="text-align: center">
     @*<button class="button_ne" onclick="location.href='@Url.Action("CreateAdmin", "Admin")'">Thêm Administrator</button>*@
     <a class="btn btn-primary" href="/Admin/CreateAdmin/" role="button">Create Admin</a>
 </div>
-
-
-@*@Html.PagedListPager(Model, Page => Url.Action("ListAdmin", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)*@
+@Html.PagedListPager(Model, Page => Url.Action("ListAdmin", new { Page = Page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)

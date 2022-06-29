@@ -147,7 +147,6 @@ namespace WebBanGiayDep.Controllers
                       select pq).ToPagedList(PageNum, PageSize);
             return View(PQ);
         }
-
         #region Quản lý admin
         //Hàm khóa hoặc mở khóa tài khoản Admin (ở đây sử dụng hàm void để Response.Write hình update lại)
         [HttpPost]
