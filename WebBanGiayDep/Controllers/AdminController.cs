@@ -128,6 +128,52 @@ namespace WebBanGiayDep.Controllers
                 return Content("<script>alert('Lỗi hệ thống.Vui lòng thử lại!');window.location='/Admin/Account';</script>");
             }
         }
+        #region Đổi mật khẩu (ChangePassword)
+        public ActionResult ChangePassword()
+        {
+            if (Session["Username_Admin"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(FormCollection collection)
+        {
+            try
+            {
+                //Lấy giá trị ở Form ChangePassword
+                string _PassOld = collection["txt_Password"];
+                string _PassNew = collection["txt_PasswordNew"];
+                string _RePassNew = collection["txt_NhapLaiPass"];
+                int _MaAdmin = int.Parse(Session["MaAdmin"].ToString());
+                var ad = data.QUANLies.SingleOrDefault(a => a.MaQL == _MaAdmin);
+                if (ad.MatKhau == _PassOld)
+                {
+                    if (_RePassNew == _PassNew)
+                    {
+                        if (_PassNew.Length >= 6)
+                        {
+                            ad.MatKhau = _PassNew;
+                            UpdateModel(ad);
+                            data.SubmitChanges();
+                            return Content("<script>alert('Đổi mật khẩu thành công!');window.location='/Admin/ChangePassword';</script>");
+                        }
+                        else
+                            return Content("<script>alert('Mật khẩu mới phải có ít nhất 6 ký tự!');window.location='/Admin/ChangePassword';</script>");
+                    }
+                    else
+                        return Content("<script>alert('Mật khẩu nhập lại không đúng!');window.location='/Admin/ChangePassword';</script>");
+                }
+                else
+                    return Content("<script>alert('Mật Khẩu cũ không đúng!');window.location='/Admin/ChangePassword';</script>");
+            }
+            catch
+            {
+                return Content("<script>alert('Thao tác đổi mật khẩu thất bại!');window.location='/Admin/ChangePassword';</script>");
+            }
+        }
+        #endregion
         public ActionResult ListAdmin(int? page)
         {
             if (Session["Username_Admin"] == null)
